@@ -1,4 +1,14 @@
 /* Base */
+.parallax {
+  background-image: url(/images/ART/brute\ impact\ fashion.JPEG);
+  height: 500px;
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 body {
   line-height: 1.7;
   color: gray;
@@ -842,12 +852,3 @@ h1, h2, h3, h4, h5,
 
 .overflow-hidden { overflow: hidden; }
 
-.parallax {
-  background-image: url(/images/ART/brute\ impact\ fashion.JPEG);
-  height: 500px;
-
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
