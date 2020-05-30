@@ -53,9 +53,9 @@ body,html{margin:0;padding:0;}
 
 /* Sets the actual background images to adorable kitties. This part is crucial. */
 .bg1::after {
-  background-image: url(//images/ART/bruteimpactfashion.JPEG);
+  background-image: url("/images/ART/bruteimpactfashion.JPEG");
 }
 
 .bg2::after {
-  background-image: url('//images/Arizona\ Star\ 2.JPG');
+  background-image: url("/images/Arizona\ Star\ 2.JPG");
 }
