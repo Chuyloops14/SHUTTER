@@ -9,7 +9,6 @@
 <!-- head pages for all links and stylesheets -->
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|PT+Mono" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -21,7 +20,7 @@
     <link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/fancybox.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/paralax.css">
+
     
   </head>
 
@@ -66,186 +65,212 @@
       </ul>
     </div>
   </header> 
-  
-    <main class="wrapper">
-      <section class="section parallax bg1">
-        <h1>Veiw ART</h1>
-      </section>
-      <section class="section static">
-        <h1>TEXT</h1>
-      </section>
-      <section class="section parallax bg2">
-        <h1>Veiw Photos</h1>
-      </section>
-    </main>
 
+  <body>    
+    <!-- Hero section -->
+    <section id="hero" class="text-white tm-font-big tm-parallax">
 
-    <!-- <div class="container-fluid photos"> -->
       
-      <!-- <div class="row pt-4 mb-5 text-center">
-        <div class="col-12">
-          <h2 class="text-white mb-4">'All Issues' 2017 &mdash; 2020</h2>
-          <h3> click on picture to view images full width </h3>
+      <div class="text-center tm-hero-text-container">
+        <div class="tm-hero-text-container-inner">
+            <h2 class="tm-hero-title">The Town</h2>
+            <p class="tm-hero-subtitle">
+              Parallax Bootstrap Theme
+              <br />by TemplateMo
+            </p>
+        </div>        
+      </div>
+
+      <div class="tm-next tm-intro-next">
+        <a href="#introduction" class="text-center tm-down-arrow-link">
+          <i class="fas fa-3x fa-caret-down tm-down-arrow"></i>
+        </a>
+      </div>      
+    </section>
+
+    <section id="introduction" class="tm-section-pad-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <img src="" alt="Image" class="img-fluid tm-intro-img" />
+          </div>
+          <div class="col-lg-6">
+            <div class="tm-intro-text-container">
+                <h2 class="tm-text-primary mb-4 tm-section-title">Introduction</h2>
+                <p class="mb-4 tm-intro-text">
+                  The Town is <strong>simple CSS template</strong> built on Bootstrap v4.1.3 
+                  and this is a little parallax layout that you can use for your websites.
+              </p>
+                <p class="mb-5 tm-intro-text">
+                  Please tell your friends about our site 
+                  <a rel="nofollow" href="https://templatemo.com">templatemo</a>. Thank you.
+                  Curabitur dapibus tristique enim a imperdiet. Etiam
+              tristique sem sed condimentum posuere. </p>
+                <div class="tm-next">
+                  <a href="#work" class="tm-intro-text tm-btn-primary">Read More</a>
+                </div>
+            </div>
+          </div>
         </div>
-      </div> -->
 
-      <!-- this is to allow items to be alligned into 4x4 order -->
+  
 
+   
+    </section>
+    <script src="js/jquery-1.9.1.min.js"></script>     
+    <script src="slick/slick.min.js"></script>
+    <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.singlePageNav.min.js"></script>     
+    <script src="js/bootstrap.min.js"></script> 
+    <script>
 
-      <!-- <div class="row align-items-stretch">
+      function getOffSet(){
+        var _offset = 450;
+        var windowHeight = window.innerHeight;
+
+        if(windowHeight > 500) {
+          _offset = 400;
+        } 
+        if(windowHeight > 680) {
+          _offset = 300
+        }
+        if(windowHeight > 830) {
+          _offset = 210;
+        }
+
+        return _offset;
+      }
+
+      function setParallaxPosition($doc, multiplier, $object){
+        var offset = getOffSet();
+        var from_top = $doc.scrollTop(),
+          bg_css = 'center ' +(multiplier * from_top - offset) + 'px';
+        $object.css({"background-position" : bg_css });
+      }
+
+      // Parallax function
+      // Adapted based on https://codepen.io/roborich/pen/wpAsm        
+      var background_image_parallax = function($object, multiplier, forceSet){
+        multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
+        multiplier = 1 - multiplier;
+        var $doc = $(document);
+        // $object.css({"background-attatchment" : "fixed"});
+
+        if(forceSet) {
+          setParallaxPosition($doc, multiplier, $object);
+        } else {
+          $(window).scroll(function(){          
+            setParallaxPosition($doc, multiplier, $object);
+          });
+        }
+      };
+
+      var background_image_parallax_2 = function($object, multiplier){
+        multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
+        multiplier = 1 - multiplier;
+        var $doc = $(document);
+        $object.css({"background-attachment" : "fixed"});
+        $(window).scroll(function(){
+          var firstTop = $object.offset().top,
+              pos = $(window).scrollTop(),
+              yPos = Math.round((multiplier * (firstTop - pos)) - 186);              
+
+          var bg_css = 'center ' + yPos + 'px';
+
+          $object.css({"background-position" : bg_css });
+        });
+      };
+      
+      $(function(){
+        // Hero Section - Background Parallax
+        background_image_parallax($(".tm-parallax"), 0.30, false);
+        background_image_parallax_2($("#contact"), 0.80);   
         
+        // Handle window resize
+        window.addEventListener('resize', function(){
+          background_image_parallax($(".tm-parallax"), 0.30, true);
+        }, true);
+
+        // Detect window scroll and update navbar
+        $(window).scroll(function(e){          
+          if($(document).scrollTop() > 120) {
+            $('.tm-navbar').addClass("scroll");
+          } else {
+            $('.tm-navbar').removeClass("scroll");
+          }
+        });
         
-        <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <a href="single.html" class="d-block photo-item">
-            <img src="images/ART/madretiera.jpg" alt="Image" class="img-fluid">
-            <div class="photo-text-more">
-              <div class="photo-text-more">
-              <h3 class="heading">MADRE TIARA</h3>
-              <span class="meta">1 Artwork</span>
-            </div>
-            </div>
-          </a>
-        </div>
+        // Close mobile menu after click 
+        $('#tmNav a').on('click', function(){
+          $('.navbar-collapse').removeClass('show'); 
+        })
 
-        <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <a href="single.html" class="d-block photo-item">
-            <img src="images/ART/princessmonoke.JPEG" alt="Image" class="img-fluid">
-            <div class="photo-text-more">
-              <div class="photo-text-more">
-              <h3 class="heading">Princess Monoke</h3>
-              <span class="meta">1 Artwork</span>
-            </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <a href="single.html" class="d-block photo-item">
-            <img src="images/ART/spritedaway.jpg" alt="Image" class="img-fluid">
-            <div class="photo-text-more">
-              <div class="photo-text-more">
-              <h3 class="heading">sprited away</h3>
-              <span class="meta">1 Artwork</span>
-            </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <a href="single.html" class="d-block photo-item">
-            <img src="images/J4T(alexis3).JPG" alt="Image" class="img-fluid">
-            <div class="photo-text-more">
-              <div class="photo-text-more">
-              <h3 class="heading">J4T Series</h3>
-              <span class="meta">4 Photos</span>
-            </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up">
-          <a href="single.html" class="d-block photo-item">
-            <img src="images/studio.jpg" alt="Image" class="img-fluid">
-            <div class="photo-text-more">
-              <h3 class="heading">Chava</h3>
-              <span class="meta">6 Photos</span>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-          <a href="single.html" class="d-block photo-item">
-            <img src="images/oldedits.JPEG" alt="Image" class="img-fluid">
-            <div class="photo-text-more">
-              <div class="photo-text-more">
-              <h3 class="heading">Old Edits</h3>
-              <span class="meta">4 Photos</span>
-            </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-          <a href="single.html" class="d-block photo-item">
-            <img src="images/tony.JPEG" alt="Image" class="img-fluid">
-            <div class="photo-text-more">
-              <div class="photo-text-more">
-              <h3 class="heading">ONEDAYZ</h3>
-              <span class="meta">4 Photos</span>
-            </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="">
-          <a href="single.html" class="d-block photo-item">
-            <img src="images/GIGI2.JPG" alt="Image" class="img-fluid">
-            <div class="photo-text-more">
-              <div class="photo-text-more">
-              <h3 class="heading">Arizona Star </h3>
-              <span class="meta">4 Photos</span>
-            </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up">
-          <a href="photos.html.html" class="d-block photo-item">
-            <img src="images/ART/FLASK ART.JPG" alt="Image" class="img-fluid">
-            <div class="photo-text-more">
-              <h3 class="heading">Flask-Art</h3>
-              <span class="meta">6 ART</span>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up">
-          <a href="photos.html" class="d-block photo-item">
-            <img src="images/ART/IMG_3566.jpg" alt="Image" class="img-fluid">
-            <div class="photo-text-more">
-              <h3 class="heading">Acrylic</h3>
-              <span class="meta">6 ART</span>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up">
-          <a href="single.html" class="d-block photo-item">
-            <img src="images/ART/IMG_3557.jpg" alt="Image" class="img-fluid">
-            <div class="photo-text-more">
-              <h3 class="heading">LA-Studio</h3>
-              <span class="meta">6 ART</span>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up">
-          <a href="photos.html" class="d-block photo-item">
-            <img src="images/ART/IMG_3541.jpg" alt="Image" class="img-fluid">
-            <div class="photo-text-more">
-              <h3 class="heading">Sketches</h3>
-              <span class="meta">6 ART</span>
-            </div>
-          </a>
-        </div>
-
-        <div class="col-6 col-md-6 col-lg-3" data-aos="fade-up">
-          <a href="photos.html" class="d-block photo-item">
-            <img src="images/ART/IMG_3561.JPG" alt="Image" class="img-fluid">
-            <div class="photo-text-more">
-              <h3 class="heading">Commisions</h3>
-              <span class="meta">6 ART</span>
-            </div>
-          </a>
-        </div>
+        // Scroll to corresponding section with animation
+        $('#tmNav').singlePageNav();        
         
+        // Add smooth scrolling to all links
+        // https://www.w3schools.com/howto/howto_css_smooth_scroll.asp
+        $("a").on('click', function(event) {
+          if (this.hash !== "") {
+            event.preventDefault();
+            var hash = this.hash;
 
-      </div> -->
+            $('html, body').animate({
+              scrollTop: $(hash).offset().top
+            }, 400, function(){
+              window.location.hash = hash;
+            });
+          } // End if
+        });
+
+        // Pop up
+        $('.tm-gallery').magnificPopup({
+          delegate: 'a',
+          type: 'image',
+          gallery: { enabled: true }
+        });
+
+        // Gallery
+        $('.tm-gallery').slick({
+          dots: true,
+          infinite: false,
+          slidesToShow: 5,
+          slidesToScroll: 2,
+          responsive: [
+          {
+            breakpoint: 1199,
+            settings: {
+              slidesToShow: 4,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 991,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 2
+            }
+          },
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+        });
+      });
+    </script>
 
 
-<!-- </div>  -->
-
-<!-- .site-wrap -->
 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
