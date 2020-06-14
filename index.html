@@ -66,227 +66,76 @@
     </div>
   </header> 
 
-  <body>    
-    <!-- Hero section -->
-    <section id="hero" class="text-white tm-font-big tm-parallax">
+  <body> 
+    <body>
 
-      
-      <div class="text-center tm-hero-text-container">
-        <div class="tm-hero-text-container-inner">
-            <h2 class="tm-hero-title">The Town</h2>
-            <p class="tm-hero-subtitle">
-              Parallax Bootstrap Theme
-              <br />by TemplateMo
-            </p>
-        </div>        
-      </div>
-
-      <div class="tm-next tm-intro-next">
-        <a href="#introduction" class="text-center tm-down-arrow-link">
-          <i class="fas fa-3x fa-caret-down tm-down-arrow"></i>
-        </a>
-      </div>      
-    </section>
-
-    <section id="introduction" class="tm-section-pad-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <img src="" alt="Image" class="img-fluid tm-intro-img" />
+      <div class="site-wrap">
+    
+      <div class="site-mobile-menu">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
           </div>
-          <div class="col-lg-6">
-            <div class="tm-intro-text-container">
-                <h2 class="tm-text-primary mb-4 tm-section-title">Introduction</h2>
-                <p class="mb-4 tm-intro-text">
-                  The Town is <strong>simple CSS template</strong> built on Bootstrap v4.1.3 
-                  and this is a little parallax layout that you can use for your websites.
-              </p>
-                <p class="mb-5 tm-intro-text">
-                  Please tell your friends about our site 
-                  <a rel="nofollow" href="https://templatemo.com">templatemo</a>. Thank you.
-                  Curabitur dapibus tristique enim a imperdiet. Etiam
-              tristique sem sed condimentum posuere. </p>
-                <div class="tm-next">
-                  <a href="#work" class="tm-intro-text tm-btn-primary">Read More</a>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+  
+      <main class="main-content">
+        <div class="container-fluid photos">
+          <div class="row align-items-stretch">
+            
+            <div class="col-6 col-md-6 col-lg-8" data-aos="fade-up">
+              <a href="single.html" class="d-block photo-item">
+                <img src="images/studio2.jpg" alt="Image" class="img-fluid">
+                <div class="photo-text-more">
+                  <div class="photo-text-more">
+                  <h3 class="heading">Photos</h3>
+                  <span class="meta">12 Photos</span>
                 </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+              <a href="single.html" class="d-block photo-item">
+                <img src="images/ART/bruteimpactfashion.JPEG" alt="Image" class="img-fluid">
+                <div class="photo-text-more">
+                  <div class="photo-text-more">
+                  <h3 class="heading">ART</h3>
+                  <span class="meta">16 Artworks</span>
+                </div>
+                </div>
+              </a>
+            </div>
+    
+          <div class="row justify-content-center">
+            <div class="col-md-12 text-center py-5">
+              <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Chuyloops</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
             </div>
           </div>
         </div>
-
-  
-
-   
-    </section>
-    <script src="js/jquery-1.9.1.min.js"></script>     
-    <script src="slick/slick.min.js"></script>
-    <script src="magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.singlePageNav.min.js"></script>     
-    <script src="js/bootstrap.min.js"></script> 
-    <script>
-
-      function getOffSet(){
-        var _offset = 450;
-        var windowHeight = window.innerHeight;
-
-        if(windowHeight > 500) {
-          _offset = 400;
-        } 
-        if(windowHeight > 680) {
-          _offset = 300
-        }
-        if(windowHeight > 830) {
-          _offset = 210;
-        }
-
-        return _offset;
-      }
-
-      function setParallaxPosition($doc, multiplier, $object){
-        var offset = getOffSet();
-        var from_top = $doc.scrollTop(),
-          bg_css = 'center ' +(multiplier * from_top - offset) + 'px';
-        $object.css({"background-position" : bg_css });
-      }
-
-      // Parallax function
-      // Adapted based on https://codepen.io/roborich/pen/wpAsm        
-      var background_image_parallax = function($object, multiplier, forceSet){
-        multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
-        multiplier = 1 - multiplier;
-        var $doc = $(document);
-        // $object.css({"background-attatchment" : "fixed"});
-
-        if(forceSet) {
-          setParallaxPosition($doc, multiplier, $object);
-        } else {
-          $(window).scroll(function(){          
-            setParallaxPosition($doc, multiplier, $object);
-          });
-        }
-      };
-
-      var background_image_parallax_2 = function($object, multiplier){
-        multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
-        multiplier = 1 - multiplier;
-        var $doc = $(document);
-        $object.css({"background-attachment" : "fixed"});
-        $(window).scroll(function(){
-          var firstTop = $object.offset().top,
-              pos = $(window).scrollTop(),
-              yPos = Math.round((multiplier * (firstTop - pos)) - 186);              
-
-          var bg_css = 'center ' + yPos + 'px';
-
-          $object.css({"background-position" : bg_css });
-        });
-      };
-      
-      $(function(){
-        // Hero Section - Background Parallax
-        background_image_parallax($(".tm-parallax"), 0.30, false);
-        background_image_parallax_2($("#contact"), 0.80);   
-        
-        // Handle window resize
-        window.addEventListener('resize', function(){
-          background_image_parallax($(".tm-parallax"), 0.30, true);
-        }, true);
-
-        // Detect window scroll and update navbar
-        $(window).scroll(function(e){          
-          if($(document).scrollTop() > 120) {
-            $('.tm-navbar').addClass("scroll");
-          } else {
-            $('.tm-navbar').removeClass("scroll");
-          }
-        });
-        
-        // Close mobile menu after click 
-        $('#tmNav a').on('click', function(){
-          $('.navbar-collapse').removeClass('show'); 
-        })
-
-        // Scroll to corresponding section with animation
-        $('#tmNav').singlePageNav();        
-        
-        // Add smooth scrolling to all links
-        // https://www.w3schools.com/howto/howto_css_smooth_scroll.asp
-        $("a").on('click', function(event) {
-          if (this.hash !== "") {
-            event.preventDefault();
-            var hash = this.hash;
-
-            $('html, body').animate({
-              scrollTop: $(hash).offset().top
-            }, 400, function(){
-              window.location.hash = hash;
-            });
-          } // End if
-        });
-
-        // Pop up
-        $('.tm-gallery').magnificPopup({
-          delegate: 'a',
-          type: 'image',
-          gallery: { enabled: true }
-        });
-
-        // Gallery
-        $('.tm-gallery').slick({
-          dots: true,
-          infinite: false,
-          slidesToShow: 5,
-          slidesToScroll: 2,
-          responsive: [
-          {
-            breakpoint: 1199,
-            settings: {
-              slidesToShow: 4,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 991,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 2
-            }
-          },
-          {
-            breakpoint: 767,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1
-            }
-          },
-          {
-            breakpoint: 480,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1
-            }
-          }
-        ]
-        });
-      });
-    </script>
-
-
-
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/jquery.countdown.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/bootstrap-datepicker.min.js"></script>
-  <script src="js/aos.js"></script>
-
-  <script src="js/jquery.fancybox.min.js"></script>
-
-  <script src="js/main.js"></script>
+      </main>
     
-  </body>
-</html>
+    </div> <!-- .site-wrap -->
+    
+      <script src="js/jquery-3.3.1.min.js"></script>
+      <script src="js/jquery-migrate-3.0.1.min.js"></script>
+      <script src="js/jquery-ui.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/owl.carousel.min.js"></script>
+      <script src="js/jquery.stellar.min.js"></script>
+      <script src="js/jquery.countdown.min.js"></script>
+      <script src="js/jquery.magnific-popup.min.js"></script>
+      <script src="js/bootstrap-datepicker.min.js"></script>
+      <script src="js/aos.js"></script>
+    
+      <script src="js/jquery.fancybox.min.js"></script>
+    
+      <script src="js/main.js"></script>
+        
+      </body>
+    </html>

@@ -776,13 +776,13 @@ h1, h2, h3, h4, h5,
 
 /* Hero */
 
-#hero {
+/* #hero {
   background-image: url(../images/ART/bruteimpactfashion.JPEG);
   background-repeat: no-repeat;
   height: 100vh;
   min-height: 375px;
   position: relative;
-}
+} */
 
 @media (min-height: 830px) {
   #hero {
